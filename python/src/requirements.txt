@@ -1,0 +1,4 @@
+ariadne==0.17.0
+flask
+pg8000
+python-dotenv
