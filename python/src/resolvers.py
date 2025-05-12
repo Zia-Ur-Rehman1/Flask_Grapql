@@ -33,18 +33,10 @@ def resolve_get_all_students(*_):
 @query.field("getMostPopularCourse")
 def resolve_get_most_popular_course(_, info, input):
     conn = create_connection()
-    try:
-        with conn.cursor() as cursor:
-            cursor.execute("SELECT 1;")  # Simple query to test the connection
-    except Exception as e:
-        print(f"Database connection failed: {e}")
-        return []
 
-    # Extract start and end dates from the input
     start_date = input['startDate']
     end_date = input['endDate']
     
-    # SQL query to find the most popular course within the given date range
     query = """
     SELECT courses.id, courses.course_name AS name, courses.major_id, courses.credit_hours, courses.tuition_cost,
     COUNT(enrollments.id) AS enrollment_count
