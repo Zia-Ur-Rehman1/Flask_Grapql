@@ -24,6 +24,7 @@ SELECT
             SELECT DISTINCT te.student_id
             FROM temp_enrollments te
             WHERE te.course_name = e.course_name
+            AND major_id IS NOT NULL
         )
         LIMIT 1
     ) AS major_id,  
