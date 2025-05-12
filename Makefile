@@ -5,7 +5,7 @@ PYTHONPATH=$(shell pwd)/python/src:$(shell pwd)/python
 # Database commands
 
 db-start:
-	docker run -d -it --rm --name database -e POSTGRES_PASSWORD=guildpassword -p 127.0.0.1:5432:5432/tcp postgres
+	docker run -d -it --rm --name database -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=testproject -p 127.0.0.1:5432:5432/tcp postgres
 
 db-stop:
 	docker stop database
@@ -16,6 +16,9 @@ db-migrate:
 
 db-seed:
 	docker cp ./database/students.csv database:./students.csv
+	docker cp ./database/majors.csv database:./majors.csv
+	docker cp ./database/enrollments.csv database:./enrollments.csv
+
 	docker cp ./database/seeder.sql database:./seeder.sql
 	docker exec database psql -h localhost -U postgres -d postgres -f seeder.sql
 
