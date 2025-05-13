@@ -93,4 +93,3 @@ def resolve_get_grades_per_course(_, info, input):
         }        
 type_defs = load_schema_from_path("graphql/schema.graphql")
 schema = make_executable_schema(type_defs, query, snake_case_fallback_resolvers)
-app = GraphQL(schema, debug=True)

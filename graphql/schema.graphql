@@ -49,9 +49,9 @@ input CourseInput {
 type Course {
   id: String!
   name: String!
-  majorId: String
-  creditHours: Int
-  tuitionCost: Float
+  majorId: String!
+  creditHours: Int!
+  tuitionCost: Float!
   deviationFromMeanGPA: Float
   rawDifferenceFromMeanGPA: Float
 }
