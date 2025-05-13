@@ -16,7 +16,7 @@ CREATE TABLE majors (
 CREATE TABLE students (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     name VARCHAR NOT NULL,
-    major_id UUID,
+    major_id UUID NOT NULL,
     CONSTRAINT fk_major FOREIGN KEY (major_id) REFERENCES majors(id) ON DELETE CASCADE
 );
 
@@ -24,7 +24,7 @@ CREATE TABLE students (
 CREATE TABLE courses (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     course_name VARCHAR NOT NULL UNIQUE, -- Add unique constraint on course_name
-    major_id UUID ,
+    major_id UUID NOT NULL,
     credit_hours INT NOT NULL,
     tuition_cost FLOAT NOT NULL,
     CONSTRAINT fk_major FOREIGN KEY (major_id) REFERENCES majors(id) ON DELETE CASCADE

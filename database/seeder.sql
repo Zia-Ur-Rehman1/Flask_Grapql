@@ -1,7 +1,13 @@
 \copy majors(id, name, credit_required, minimum_gpa) FROM 'majors.csv' CSV HEADER NULL 'null';
 
-\copy students(id, name, major_id) FROM 'students.csv' CSV HEADER NULL 'null';
+CREATE TEMP TABLE temp_students AS TABLE students WITH NO DATA;
 
+\copy temp_students(id, name, major_id) FROM 'students.csv' CSV HEADER NULL 'null';
+INSERT INTO students (id, name, major_id)
+SELECT id, name, major_id
+FROM temp_students
+WHERE major_id IS NOT NULL;
+DROP TABLE temp_students;
 
 CREATE TEMP TABLE temp_enrollments (
     student_id UUID,
@@ -44,5 +50,6 @@ SELECT
     te.cost,
     te.letter_grade
 FROM temp_enrollments te
-JOIN courses c ON te.course_name = c.course_name; 
+JOIN courses c ON te.course_name = c.course_name
+Where te.student_id IN (SELECT id FROM students);
 DROP TABLE temp_enrollments;

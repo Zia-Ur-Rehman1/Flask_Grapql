@@ -12,7 +12,7 @@ db-stop:
 
 db-migrate:
 	docker cp ./database/schema.sql database:./schema.sql
-	docker exec database psql -h localhost -U postgres -d postgres -f schema.sql
+	docker exec database psql -h localhost -U postgres -d testproject -f schema.sql
 
 db-seed:
 	docker cp ./database/students.csv database:./students.csv
@@ -20,7 +20,7 @@ db-seed:
 	docker cp ./database/enrollments.csv database:./enrollments.csv
 
 	docker cp ./database/seeder.sql database:./seeder.sql
-	docker exec database psql -h localhost -U postgres -d postgres -f seeder.sql
+	docker exec database psql -h localhost -U postgres -d testproject -f seeder.sql
 
 # TypeScript Commands
 
