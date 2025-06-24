@@ -12,11 +12,6 @@ You may use either Python or Typescript (choose one only, boilerplate found in t
 
 You will find several CSVs in the Data section below. You will use these to populate your data table(s). How you structure the data is entirely up to you. We have provided an example of how to write a GraphQL resolver if you are unfamiliar. The ultimate goal is for you to write the business logic to satisfy the GraphQL queries already provided in the `~/graphql/schema.graphql` file (do not modify this file).
 
-### What we are looking for
-
-- [Software Engineer I/II Requirements](SE_REQUIREMENTS.md)
-- [Senior Software Engineer I/II Requirements](SSE_REQUIREMENTS.md)
-
 ### Background
 
 - To graduate, every student must complete 120 credits
